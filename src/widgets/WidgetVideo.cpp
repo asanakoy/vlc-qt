@@ -40,6 +40,7 @@
 #include "core/Video.h"
 
 #include "widgets/WidgetVideo.h"
+#include <iostream>
 
 VlcWidgetVideo::VlcWidgetVideo(VlcMediaPlayer *player,
                                QWidget *parent)
@@ -227,7 +228,8 @@ WId VlcWidgetVideo::request()
     /* This is currently disabled on X11 as it does not seem to improve
      * performance, but causes the video widget to be transparent... */
 #ifndef Q_WS_X11
-    _video->setAttribute( Qt::WA_PaintOnScreen, true );
+    std::cerr << "libvlc-qt : WARNING : not defined Q_WS_X11!\n";
+    //_video->setAttribute( Qt::WA_PaintOnScreen, true );
 #endif
 
     _layout->addWidget(_video);
